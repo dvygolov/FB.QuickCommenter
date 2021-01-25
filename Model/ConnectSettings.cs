@@ -15,10 +15,13 @@ namespace FB.QuickCommenter.Model
         {
             var s = line.Split(':');
             Token=s[0];
-            ProxyAddress=s[1];
-            ProxyPort=s[2];
-            ProxyLogin=s[3];
-            ProxyPassword=s[4];
+            if (s.Length > 1)
+            {
+                ProxyAddress = s[1];
+                ProxyPort = s[2];
+                ProxyLogin = s[3];
+                ProxyPassword = s[4];
+            }
         }
     }
 }
