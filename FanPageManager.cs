@@ -95,8 +95,7 @@ namespace FB.QuickCommenter
             req.AddQueryParameter("access_token", accessToken);
             var json = await _re.ExecuteFbRequestAsync(req, changeToken: false);
             return json["data"]
-                .Where(p => p["message"] != null)
-                .Select(p => (p["id"].ToString(), p["message"].ToString()))
+                .Select(p => (p["id"].ToString(), p["message"]?.ToString()??"Без текста!"))
                 .ToList();
         }
     }
